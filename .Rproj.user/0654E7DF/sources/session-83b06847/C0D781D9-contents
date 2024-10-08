@@ -1,0 +1,27 @@
+# Cargar las librerías necesarias
+library(dplyr)
+
+# Crear el data frame
+set.seed(123)  # Para reproducibilidad
+dosis <- rep(c(0, 50, 100), each = 5)  # Dosis de fertilización
+repeticion <- rep(1:5, times = 3)      # Repeticiones
+respuesta <- rnorm(15, mean = 20, sd = 5) + dosis / 10  # Respuesta simulada
+
+# Crear el data frame
+data <- data.frame(Dosis = factor(dosis),
+                   Repeticion = factor(repeticion),
+                   Respuesta = respuesta)
+
+# Visualizar los datos
+print(data)
+
+# Realizar el análisis de varianza (ANOVA)
+modelo <- aov(Respuesta ~ Dosis + Error(Repeticion/Dosis), data = data)
+summary(modelo)
+
+# Gráfico de los resultados
+boxplot(Respuesta ~ Dosis, data = data,
+        main = "Efecto de la Dosis de Fertilización Nitrogenada",
+        xlab = "Dosis (kg/ha)",
+        ylab = "Respuesta",
+        col = c("lightblue", "lightgreen", "lightcoral"))
