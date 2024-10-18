@@ -1,9 +1,9 @@
 ---
 title: "Mi primera pagina web"
 author: "Flor Chávez Gómez"
-format: htlm
+format: html
 editor: visual
----
+
     
 ---
 

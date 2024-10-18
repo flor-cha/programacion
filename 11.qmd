@@ -1,16 +1,8 @@
-```{r}
-
-```
-
-```{r}
-
-```
-
 ---
-title: "Mi primera pagina web"
-author: "Flor"
-format: html
-editor: visual
+title: "DOS"
+format:
+  revealjs: 
+    theme: solarized
 ---
 
 ## Quarto

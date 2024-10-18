@@ -1,0 +1,4 @@
+- source: mi primer quarto.qmd
+  quarto-pub:
+    - id: c68abca7-b3dc-46e6-ac59-cd1373a6dd2d
+      url: 'https://flor.quarto.pub/mi-primera-pagina-web'
