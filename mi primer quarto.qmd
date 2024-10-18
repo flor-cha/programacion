@@ -3,12 +3,9 @@ title: "Mi primera pagina web"
 author: "Flor Chávez Gómez"
 format: html
 editor: visual
-
-    
 ---
 
-
----
+------------------------------------------------------------------------
 
 ## Quarto
 
@@ -30,39 +27,44 @@ You can add options to executable code like this
 ```
 
 The `echo: false` option disables the printing of code (only output is displayed).
+
 ```{r}
 
 ```
 
 # como usar quarto?
+
 ## fuentes
-- Negrita: **esto es fuente negrita**
-- Cursiva: _Solanum tuberosum_
+
+-   Negrita: **esto es fuente negrita**
+-   Cursiva: *Solanum tuberosum*
+
 ```{r}
 
 ```
 
-## fórmulas matemáticas 
+## fórmulas matemáticas
+
 Este es el area de una circunsferencia $Area_c\ =\pi\cdot r^2$
 
 Este es una formula cualquiera $$\frac{\left(2x\ -\1\right)^2\ -\ 1}{4}\ =\ K$$
 
 # mi primera pagina web
+
 ```{r}
 
 ```
 
-1. tener mi proyecto
-1. conectar mi proyecto a Github
-1. tener un archivo en formto html llamado  *index.html*
-1. Hacer push al repositorio
-1. activar Github pages
-```{r}
-```{r}
+1.  tener mi proyecto
+2.  conectar mi proyecto a Github
+3.  tener un archivo en formto html llamado *index.html*
+4.  Hacer push al repositorio
+5.  activar Github pages
+
+
 
 ```
 
+
 ```
-
-
 
