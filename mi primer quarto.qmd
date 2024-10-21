@@ -84,11 +84,12 @@ anova(modelo)
 
 # box plot gráfica
 ```{r}
+library(ggplot2)
 ggplot(flor, aes(x = factor(geno), y = lfa, fill = factor(riego))) +
   geom_boxplot() +
   labs(x = "genotipo" , y = "LFA" , fill = "riego") +
   theme_minimal() +
-  theme(axis.tex.x = element_text(angle = 45, hjust = 1)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   ggtitle("Boxplot de LFA por genotipo y riego")
 ```
 
