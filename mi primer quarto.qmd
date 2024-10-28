@@ -72,6 +72,10 @@ Este es una formula cualquiera $$\frac{\left(2x\ -\1\right)^2\ -\ 1}{4}\ =\ K$$
 
 ## Importar datos
 ```{r}
+source('https://inkaverse.com/setup.r')
+```
+
+```{r}
 flor <- read.csv(file = "LA MOLINA 2014 POTATO WUE (FB) - fb.csv" , header = TRUE, sep = ",")
 ```
 
@@ -91,5 +95,54 @@ ggplot(flor, aes(x = factor(geno), y = lfa, fill = factor(riego))) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   ggtitle("Boxplot de LFA por genotipo y riego")
+```
+## Comparacion de medias 
+``
+```{r}
+modelo <- lm(formula = lfa ~ bloque + geno + riego + riego*geno , data = flor)
+
+anova(modelo)
+
+library(agricolae)
+
+tukey_resultado <- HSD.test(modelo
+                            , c("geno", "riego")
+                            , group = TRUE)
+tukey_resultado
+
+plot(tukey_resultado)
+
+str(tukey_resultado)
+
+tukey_resultado
+
+grupos <- tukey_resultado$groups %>% 
+  rownames_to_column("tratamientos") %>% 
+  separate(tratamientos,into = c("geno","riego")
+           , sep = ":")
+  
+str(grupos)
+```
+
+
+```{r}
+library(ggplot2)
+
+ggplot(grupos, aes(x = geno, y = lfa, fill = riego)) +
+  geom_bar(stat = "identity", position = "dodge", color = "black") +
+  scale_fill_brewer(palette = "Set1") +  # Paleta de colores ggplot
+  labs(x = "Genotipo", y = "LFA", fill = "Riego") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  ggtitle("Gráfico de barras: LFA por genotipo y riego")
+
+
+
+
+
+
+
+
+
 ```
 
