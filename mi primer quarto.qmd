@@ -205,5 +205,70 @@ list(p1, p2) %>%
   plot_grid(plotlist = ., nrow = 1)
 ```
 
+# Gráficos en ggplot2
+
+## Data cruda 
+
+### Box plot
 
 ```{r}
+flor %>% 
+  ggplot(data = ., aes(x = geno, y = hi, fill = riego)) +
+  geom_boxplot() +
+  labs(x = "Genotipos"
+       , y = "Indice de cosecha"
+       , fill = "Tratamiento"
+       , title ="Eficiencia de uso de agua en papa"
+       , subtitle = "Indice de cosecha"
+       , caption = "n = 150",) +
+  theme_classic() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+## Scater plot
+
+```{r}
+flor %>% 
+  ggplot(data = .
+         , aes(x = twue, y = hi, color = riego)) +
+  geom_point() +
+  geom_smooth(method = lm) +
+  labs(x = "Eficiencia de agua de tuberculo"
+       , y = "Indice de cosecha"
+       , color = "Tratamiento"
+       , title ="Eficiencia de uso de agua en papa"
+       , subtitle = "Indice de cosecha vs Eficiencia de uso de agua de tuberculo"
+       , caption = "n = 150",
+       )+
+  theme_bw()
+  
+```
+
+## Datos resumidos 
+
+```{r}
+modelo <- lm(lfa ~ bloque + riego*geno , data = flor)
+
+anova(modelo)
+
+library(agricolae)
+
+tukey <- HSD.test(modelo
+                  , c("geno", "riego")
+                  , group = TRUE)
+
+grupos <- tukey_resultado$groups %>% 
+  rownames_to_column("tratamientos") %>% 
+  separate(tratamientos,into = c("geno","riego")
+           , sep = ":")
+  
+```
+
+```{r}
+grupos %>% 
+ ggplot(aes(x = geno, y = lfa, fill = riego)) + 
+  geom_col()
+```
+
+
+
